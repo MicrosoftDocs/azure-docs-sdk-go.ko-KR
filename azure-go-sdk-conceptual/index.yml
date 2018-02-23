@@ -1,0 +1,84 @@
+### YamlMime:YamlDocument
+documentType: LandingData
+title: "Go 개발자를 위한 Azure"
+metadata:
+  title: "Go 개발자를 위한 Azure - 자습서, API 참조"
+  description: "아래의 개발자 리소스를 사용하여 Azure SDK for Go를 이용한 개발을 시작합니다."
+  keywords: Azure, Go, golang, SDK, API
+  author: sptramer
+  ms.author: sttramer
+  manager: routlaw
+  ms.date: 01/30/2018
+  ms.topic: article
+  featureFlags:
+  - clicktale
+  ms.prod: azure
+  ms.technology: azure
+  ms.devlang: golang
+  ms.service: multiple
+  ms.openlocfilehash: cd733628931b0b902438734340b1145ad9c179d6
+  ms.sourcegitcommit: aaa8c37880332625f858a38f5918e6cf581bf48d
+  ms.translationtype: HT
+  ms.contentlocale: ko-KR
+  ms.lasthandoff: 02/15/2018
+sections:
+- items:
+  - type: markdown
+    text: "공식 자습서 및 도구를 사용하여 Azure SDK for Go를 이용한 앱 개발을 시작합니다.\n"
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - title: "시작"
+      html: "<p>Azure SDK for Go 설치</p>"
+      href: https://docs.microsoft.com/go/azure/azure-sdk-go-install
+      image:
+        src: https://docs.microsoft.com/media/common/i_get-started.svg
+    - title: "코드 샘플"
+      html: "<p>Go를 사용한 Azure 코드 샘플</p>"
+      image:
+        src: https://docs.microsoft.com//media/common/i_code-samples.svg
+      href: https://github.com/azure-samples/azure-sdk-for-go-samples
+    - title: "SDK &amp; 도구"
+      html: "<p>개발자 도구</p>"
+      href: https://docs.microsoft.com/go/azure/azure-sdk-go-tools
+      image:
+        src: https://docs.microsoft.com/media/common/i_download-install.svg
+    - title: "API 참조"
+      html: "<p>Azure SDK for Go를 위한 GoDoc</p>"
+      href: https://godoc.org/github.com/Azure/azure-sdk-for-go
+      image:
+        src: https://docs.microsoft.com/media/common/i_api-reference.svg
+- title: "Go SDK 빠른 시작"
+  items:
+  - type: paragraph
+    text: "Azure SDK for Go 사용 방법을 학습합니다."
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 2
+    items:
+    - title: "Go용 Azure 리소스 템플릿으로부터 가상 머신 배포"
+      href: https://docs.microsoft.com/go/azure/azure-sdk-go-qs-vm
+      image:
+        src: https://docs.microsoft.com/azure/virtual-machines/media/index/virtualmachine.svg
+    - title: "Azure Storage SDK for Go를 사용하여 Azure Blob Storage에 개체 전송"
+      href: https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-go?toc=%2fgo%2fazure%2ftoc.json
+      image:
+        src: https://docs.microsoft.com/azure/media/index/logo_azure-blob-storage.svg
+    - title: "Go를 사용하여 Azure Database for PostgreSQL에 연결"
+      href: https://docs.microsoft.com/azure/postgresql/connect-go?toc=%2fgo%2fazure%2ftoc.json
+      image:
+        src: https://docs.microsoft.com//azure/media/index/PostgreSQL.svg
+  - title: "샘플"
+    items:
+    - type: list
+      style: unordered
+      items:
+      - html: "<a href=\"https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/iam\">Azure 서비스를 사용하여 인증</a>"
+      - html: "<a href=\"https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute\">새 가상 머신 만들기</a>"
+      - html: "<a href=\"https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerinstance\">Azure Container Instances에 컨테이너 배포</a>"
+      - html: "<a href=\"https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerservice\">Azure Kubernetes Service에서 클러스터 만들기</a>"
+      - html: "<a href=\"https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage\">Azure Storage 서비스 작업</a>"
