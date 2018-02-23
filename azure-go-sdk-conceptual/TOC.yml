@@ -1,0 +1,25 @@
+items:
+  - name: Azure SDK for Go
+    href: index.yml
+  - name: 개요
+    items:
+      - name: 설치
+        href: azure-sdk-go-install.md
+      - name: 도구
+        href: azure-sdk-go-tools.md
+  - name: Go SDK 빠른 시작
+    items:
+      - name: 가상 머신 및 리소스 템플릿
+        href: azure-sdk-go-qs-vm.md
+      - name: Azure Blob Storage
+        href: /azure/storage/blobs/storage-quickstart-blobs-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure Database for PostgreSQL
+        href: /azure/postgresql/connect-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure Database for MySQL
+        href: /azure/mysql/connect-go?toc=%2fgo%2fazure%2ftoc.json
+      - name: Azure SQL Database
+        href: /azure/sql-database/sql-database-connect-query-go?toc=%2fgo%2fazure%2ftoc.json
+  - name: 샘플
+    href: 'http://github.com/azure-samples/azure-sdk-for-go-samples'
+  - name: API 참조
+    href: 'https://godoc.org/github.com/Azure/azure-sdk-for-go'

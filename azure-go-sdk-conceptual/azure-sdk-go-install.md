@@ -1,0 +1,90 @@
+---
+title: "Azure SDK for Go 설치"
+description: "Azure SDK for Go 설치, 공급 및 구성 방법."
+keywords: azure, sdk, go, golang, azure sdk
+author: sptramer
+ms.author: sttramer
+ms.date: 01/30/2018
+ms.topic: article
+ms.devlang: go
+manager: routlaw
+ms.openlocfilehash: f822a9304a4744e0b0e93286303aa8bb80fec852
+ms.sourcegitcommit: aaa8c37880332625f858a38f5918e6cf581bf48d
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 02/15/2018
+---
+# <a name="installing-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
+
+Azure SDK for Go 시작! 이 SDK를 사용하면 Go 응용 프로그램에서 Azure 서비스를 관리하고 상호 작용할 수 있습니다.
+
+## <a name="get-the-azure-sdk-for-go"></a>Azure SDK for Go 가져오기
+
+[!INCLUDE [azure-sdk-go-get](includes/azure-sdk-go-get.md)]
+
+Azure Storage Blob을 사용하려면 별도의 SDK가 필요합니다.
+
+```bash
+go get -u -d github.com/Azure/azure-storage-blob-go/...
+```
+
+## <a name="vendoring-the-azure-sdk-for-go"></a>Azure SDK for Go 공급
+
+Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. `dep` 지원을 사용하려면 `gitub.com/Azure/azure-sdk-for-go`을(를) `Gopkg.toml`의 `[[constraint]]` 섹션에 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
+
+```
+[[constraint]]
+name = "github.com/Azure/azure-sdk-for-go"
+version = "14.0.0"
+```
+
+## <a name="including-the-azure-sdk-for-go-in-your-project"></a>프로젝트에 Azure SDK for Go 포함하기
+
+Go 코드에서 Azure 서비스를 사용하려면 상호 작용하려는 모든 서비스 및 필요한 `autorest` 모듈을 가져옵니다.
+GoDoc에서 제공되는 전체 모듈 목록에서는 [사용 가능한 서비스](https://godoc.org/github.com/Azure/azure-sdk-for-go) 및 [AutoRest 패키지](https://godoc.org/github.com/Azure/go-autorest)를 확인할 수 있습니다. `go-autorest`에서 가장 일반적으로 필요한 패키지는 다음과 같습니다.
+
+| 패키지 | 설명 |
+|---------|-------------|
+| [github.com/Azure/go-autorest/autorest][autorest] | 서비스 클라이언트 인증을 처리하기 위한 개체 |
+| [github.com/Azure/go-autorest/autorest/azure][autorest/azure] | Azure 서비스와의 상호 작용을 위한 상수 |
+| [github.com/Azure/go-autorest/autorest/adal][autorest/adal] | Azure 서비스에 액세스하기 위한 인증 메커니즘 |
+| [github.com/Azure/go-autorest/autorest/to][autorest/to] | Azure SDK 데이터 구조를 사용하기 위한 형식 어설션 도우미 |
+
+[autorest]: https://godoc.org/github.com/Azure/go-autorest/autorest
+[autorest/azure]: https://godoc.org/github.com/Azure/go-autorest/autorest/azure
+[autorest/adal]: https://godoc.org/github.com/Azure/go-autorest/autorest/adal
+[autorest/to]: https://godoc.org/github.com/Azure/go-autorest/autorest/to
+
+Azure 서비스를 위한 모듈은 해당 모듈을 위한 SDK API에서 개별적으로 제공됩니다. 이러한 버전은 모듈 가져오기 경로에 속하며 _서비스 버전_ 또는 _프로필_로 제공됩니다. 현재까지는 개발 및 릴리스 용도의 특정 서비스 버전을 사용하는 것이 좋습니다. 서비스는 `services` 모듈 아래에 있습니다. 가져오기의 전체 경로는 서비스 이름과 `YYYY-MM-DD` 형식의 버전 그리고 다시 서비스 이름으로 구성됩니다. 예를 들어 Compute 서비스의 `2017-03-30` 버전을 포함하기 위해서는 다음과 같습니다.
+
+```go
+import "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-03-30/compute"
+```
+
+현재까지는 특별한 이유가 없는 한 최신 서비스 버전을 사용하는 것이 좋습니다.
+
+서비스에 대해 총체적 스냅샷이 필요한 경우 단일 프로필 버전을 선택할 수도 있습니다. 현재까지 유일하게 잠긴 프로필은 버전 `2017-03-30`이며, 여기에는 최신 서비스 기능이 포함되지 않았을 수 있습니다. 프로필은 `profiles` 모듈 아래에 있으며, 버전이 `YYYY-MM-DD` 형식으로 표시되어 있습니다. 서비스는 해당 프로필 버전 아래에 그룹화되어 있습니다. 예를 들어 `2017-03-09` 프로필에서 Azure 리소스 관리 모듈을 가져오려면:
+
+```go
+import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/resources/mgmt/resources"
+```
+
+> [!WARNING]
+> 또한 `preview` 및 `latest` 프로필도 사용할 수 있습니다. 이것들은 사용하지 않는 것이 좋습니다. 이러한 프로필은 롤링 버전이므로, 서비스 동작이 언제든지 변경될 수 있습니다.
+
+## <a name="next-steps"></a>다음 단계
+
+Azure SDK for Go 사용을 시작하려면 빠른 시작을 참조하십시오.
+
+* [템플릿에서 가상 머신 배포](azure-sdk-go-qs-vm.md)
+* [Azure Blob SDK for Go를 사용하여 Azure Blob Storage에 개체 전송](/azure/storage/blobs/storage-quickstart-blobs-go?toc=%2fgo%2fazure%2ftoc.json)
+* [Azure Database for PostgreSQL에 연결](/azure/postgresql/connect-go?toc=%2fgo%2fazure%2ftoc.json)
+
+Go SDK에서 직접 다른 서비스를 시작하려면, 제공되는 샘플 코드 중 일부를 참조하십시오.
+
+* [Azure 서비스를 사용하여 인증](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/iam)
+* [SSH 인증으로 새로운 가상 머신 배포](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute)
+* [Azure Container Instances에 컨테이너 이미지 배포](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerinstance)
+* [Azure Kubernetes Service에서 클러스터 만들기](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerservice)
+* [Azure Storage 서비스 작업](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/storage)
+* [Azure SDK for Go를 위한 모든 샘플](https://github.com/azure-samples/azure-sdk-for-go-samples)
