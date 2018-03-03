@@ -8,11 +8,11 @@ ms.date: 01/30/2018
 ms.topic: article
 ms.devlang: go
 manager: routlaw
-ms.openlocfilehash: f822a9304a4744e0b0e93286303aa8bb80fec852
-ms.sourcegitcommit: aaa8c37880332625f858a38f5918e6cf581bf48d
+ms.openlocfilehash: 7fc0a3ff71b0b06f616ae43cff311352fe873345
+ms.sourcegitcommit: 890f5f01a70e7e376e6bb98a2030afbfc016f538
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/01/2018
 ---
 # <a name="installing-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -30,7 +30,7 @@ go get -u -d github.com/Azure/azure-storage-blob-go/...
 
 ## <a name="vendoring-the-azure-sdk-for-go"></a>Azure SDK for Go 공급
 
-Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. `dep` 지원을 사용하려면 `gitub.com/Azure/azure-sdk-for-go`을(를) `Gopkg.toml`의 `[[constraint]]` 섹션에 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
+Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. `dep` 지원을 사용하려면 `github.com/Azure/azure-sdk-for-go`을(를) `Gopkg.toml`의 `[[constraint]]` 섹션에 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
 
 ```
 [[constraint]]
