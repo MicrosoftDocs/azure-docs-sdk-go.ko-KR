@@ -8,11 +8,11 @@ ms.date: 02/08/2018
 ms.topic: quickstart
 ms.devlang: go
 manager: routlaw
-ms.openlocfilehash: e530d944deca40e9e6c29b6c2768e2367822714e
-ms.sourcegitcommit: aaa8c37880332625f858a38f5918e6cf581bf48d
+ms.openlocfilehash: ae460dbf21b13c40f3d564274f8b790afe005aae
+ms.sourcegitcommit: af3473779cd7c2978f290fbdc51ee15eb1130840
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 02/15/2018
+ms.lasthandoff: 03/15/2018
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>빠른 시작: Azure SDK for Go를 사용하여 템플릿에서 Azure 가상 머신 배포
 
@@ -32,7 +32,7 @@ Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서�
 
 ## <a name="create-a-service-principal"></a>서비스 주체 만들기
 
-응용 프로그램에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 인증)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
+응용 프로그램에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name az-go-vm-quickstart
@@ -40,7 +40,7 @@ az ad sp create-for-rbac --name az-go-vm-quickstart
 
 출력에 `appId`, `password` 및 `tenant` 값이 기록되는지 __확인하십시오__. 이러한 값은 응용 프로그램이 Azure에서 인증을 수행하는 데 사용됩니다.
 
-Azure CLI 2.0을 사용한 서비스 주체 만들기 및 관리에 대한 자세한 내용은 [Azure CLI 2.0을 사용하여 서비스 주체 만들기](/cli/azure/create-an-azure-service-principal-azure-cli)를 참조하십시오.
+Azure CLI 2.0을 사용한 서비스 주체 만들기 및 관리에 대한 자세한 내용은 [Azure CLI 2.0을 사용하여 Azure 서비스 주체 만들기](/cli/azure/create-an-azure-service-principal-azure-cli)를 참조하십시오.
 
 ## <a name="get-the-code"></a>코드 가져오기
 
@@ -79,7 +79,7 @@ go get -u -d github.com/azure-samples/azure-sdk-for-go-samples/quickstart/deploy
     }
 ```
 
-* `vm_password`: 가상 머신 사용자 계정의 암호입니다. 길이는 6-72자여야 하며 다음 문자 중 3개를 포함해야 합니다.
+* `vm_password`: 가상 머신 사용자 계정의 암호입니다. 길이는 12-72자여야 하며 다음 문자 중 3개를 포함해야 합니다.
   * 소문자
   * 대문자
   * 숫자
