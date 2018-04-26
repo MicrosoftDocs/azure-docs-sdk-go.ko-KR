@@ -3,19 +3,19 @@ title: Azure SDK for Go 설치
 description: Azure SDK for Go 설치, 공급 및 구성 방법.
 author: sptramer
 ms.author: sttramer
-ms.date: 01/30/2018
+ms.date: 03/14/2018
 ms.topic: article
 ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: 580daf4f2e91eabf97e3acd21bda183c559b57da
-ms.sourcegitcommit: fcc1786d59d2e32c97a9a8e0748e06f564a961bd
+ms.openlocfilehash: a6a92e080aea1a92f47a9d7083f133ca05a47541
+ms.sourcegitcommit: 26520a8c6e812facb5b9432d68c370fa23c99888
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/23/2018
+ms.lasthandoff: 04/16/2018
 ---
-# <a name="installing-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
+# <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
-Azure SDK for Go 시작! 이 SDK를 사용하면 Go 응용 프로그램에서 Azure 서비스를 관리하고 상호 작용할 수 있습니다.
+Azure SDK for Go 시작! SDK를 사용하면 Go 응용 프로그램에서 Azure 서비스를 관리하고 상호 작용할 수 있습니다.
 
 ## <a name="get-the-azure-sdk-for-go"></a>Azure SDK for Go 가져오기
 
@@ -27,7 +27,7 @@ Azure Storage Blob을 사용하려면 별도의 SDK가 필요합니다.
 go get -u -d github.com/Azure/azure-storage-blob-go/...
 ```
 
-## <a name="vendoring-the-azure-sdk-for-go"></a>Azure SDK for Go 공급
+## <a name="vendor-the-azure-sdk-for-go"></a>Azure SDK for Go 공급하기
 
 Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. `dep` 지원을 사용하려면 `github.com/Azure/azure-sdk-for-go`을(를) `Gopkg.toml`의 `[[constraint]]` 섹션에 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
 
@@ -37,7 +37,7 @@ name = "github.com/Azure/azure-sdk-for-go"
 version = "14.0.0"
 ```
 
-## <a name="including-the-azure-sdk-for-go-in-your-project"></a>프로젝트에 Azure SDK for Go 포함하기
+## <a name="include-the-azure-sdk-for-go-in-your-project"></a>프로젝트에 Azure SDK for Go 포함하기
 
 Go 코드에서 Azure 서비스를 사용하려면 상호 작용하려는 모든 서비스 및 필요한 `autorest` 모듈을 가져옵니다.
 GoDoc에서 제공되는 전체 모듈 목록에서는 [사용 가능한 서비스](https://godoc.org/github.com/Azure/azure-sdk-for-go) 및 [AutoRest 패키지](https://godoc.org/github.com/Azure/go-autorest)를 확인할 수 있습니다. `go-autorest`에서 가장 일반적으로 필요한 패키지는 다음과 같습니다.
