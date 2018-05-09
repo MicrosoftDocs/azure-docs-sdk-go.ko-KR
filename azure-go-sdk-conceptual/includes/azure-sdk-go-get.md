@@ -1,3 +1,17 @@
+---
+author: sptramer
+ms.author: sttramer
+manager: carmonm
+ms.date: 02/14/2018
+ms.topic: include
+ms.prod: azure
+ms.technology: azure-cli
+ms.openlocfilehash: ddd58efdbc0c2d3ded068a9bebf2466db702566f
+ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.translationtype: HT
+ms.contentlocale: ko-KR
+ms.lasthandoff: 05/03/2018
+---
 [Azure SDK for Go](https://github.com/Azure/azure-sdk-for-go)는 Go 버전 1.8 이상과 호환됩니다. [Azure Stack 프로필](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-version-profiles)을 사용하는 환경의 경우 최소 요구 사항은 Go 버전 1.9입니다.
 시스템에서 Go를 사용할 수 없는 경우 [Go 설치 지침](https://golang.org/doc/install)을 참조하십시오.
 

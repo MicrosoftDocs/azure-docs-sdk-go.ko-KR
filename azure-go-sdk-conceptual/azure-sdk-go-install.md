@@ -3,15 +3,17 @@ title: Azure SDK for Go 설치
 description: Azure SDK for Go 설치, 공급 및 구성 방법.
 author: sptramer
 ms.author: sttramer
-ms.date: 03/14/2018
-ms.topic: article
-ms.devlang: go
 manager: carmonm
-ms.openlocfilehash: a6a92e080aea1a92f47a9d7083f133ca05a47541
-ms.sourcegitcommit: 26520a8c6e812facb5b9432d68c370fa23c99888
+ms.date: 03/14/2018
+ms.topic: conceptual
+ms.prod: azure
+ms.technology: azure-sdk-go
+ms.devlang: go
+ms.openlocfilehash: ad77bdff881770512a828b19dc7af4821f4a55ad
+ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/16/2018
+ms.lasthandoff: 05/03/2018
 ---
 # <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -62,7 +64,7 @@ import "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-03-30/compu
 
 현재까지는 특별한 이유가 없는 한 최신 서비스 버전을 사용하는 것이 좋습니다.
 
-서비스에 대해 총체적 스냅샷이 필요한 경우 단일 프로필 버전을 선택할 수도 있습니다. 현재까지 유일하게 잠긴 프로필은 버전 `2017-03-30`이며, 여기에는 최신 서비스 기능이 포함되지 않았을 수 있습니다. 프로필은 `profiles` 모듈 아래에 있으며, 버전이 `YYYY-MM-DD` 형식으로 표시되어 있습니다. 서비스는 해당 프로필 버전 아래에 그룹화되어 있습니다. 예를 들어 `2017-03-09` 프로필에서 Azure 리소스 관리 모듈을 가져오려면:
+서비스에 대해 총체적 스냅샷이 필요한 경우 단일 프로필 버전을 선택할 수도 있습니다. 현재까지 유일하게 잠긴 프로필은 버전 `2017-03-09`이며, 여기에는 최신 서비스 기능이 포함되지 않았을 수 있습니다. 프로필은 `profiles` 모듈 아래에 있으며, 버전이 `YYYY-MM-DD` 형식으로 표시되어 있습니다. 서비스는 해당 프로필 버전 아래에 그룹화되어 있습니다. 예를 들어 `2017-03-09` 프로필에서 Azure 리소스 관리 모듈을 가져오려면:
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/profiles/2017-03-09/resources/mgmt/resources"
