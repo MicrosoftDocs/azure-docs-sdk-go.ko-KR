@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 2ea44fb8a4fdd6098bb44d3b5092cfbc352b424d
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 1e122ab161766023ea146329a5edb13143699b8b
+ms.sourcegitcommit: b81b17cbb934399c195bfdcb87137aee935f5234
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34755535"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>Azure SDK for Go 사용 개발자를 위한 도구
 
@@ -40,10 +41,3 @@ Visual Studio Code는 확장을 통해 Go 언어에 대해 포괄적인 지원�
 
 > [!div class="nextstepaction"]
 > [dep 종속성 관리자 얻기](https://github.com/tools/godep)
-
-## <a name="telemetry-with-application-insights"></a>Application Insights를 사용하여 원격 분석
-
-[Application Insights](https://azure.microsoft.com/en-us/services/application-insights/)는 응용 프로그램에서 원격 분석 정보를 쉽게 수집할 수 있게 해주는 분석 제품으로서, Azure 에코시스템, Visual Studio Team Services 및 GitHub와 통합됩니다. 여러 응용 프로그램에서 사용할 수 있으며, Microsoft는 Application Insights에 사용할 수 있는 Go SDK를 제공합니다.
-
-> [!div class="nextstepaction"]
-> [Go SDK용 Application Insights 얻기](https://github.com/Microsoft/ApplicationInsights-Go) 
