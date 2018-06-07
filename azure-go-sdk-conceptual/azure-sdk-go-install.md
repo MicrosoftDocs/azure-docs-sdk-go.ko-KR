@@ -9,11 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: ad77bdff881770512a828b19dc7af4821f4a55ad
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 8423b3fedd89e57662bf96f777a5b30926914da9
+ms.sourcegitcommit: b81b17cbb934399c195bfdcb87137aee935f5234
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/03/2018
+ms.lasthandoff: 06/04/2018
+ms.locfileid: "34755518"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -23,11 +24,14 @@ Azure SDK for Go 시작! SDK를 사용하면 Go 응용 프로그램에서 Azure 
 
 [!INCLUDE [azure-sdk-go-get](includes/azure-sdk-go-get.md)]
 
-Azure Storage Blob을 사용하려면 별도의 SDK가 필요합니다.
+일부 Azure 서비스에는 자체적으로 Go SDK가 있고, 코어 Azure SDK Go 패키지에는 포함되어 있지 않습니다. 다음 표에서 고유의 SDK가 포함된 서비스 및 해당 패키지 이름이 리스트되어 있습니다. 이러한 패키지는 모두 미리 보기에 있는 것으로 간주됩니다.
 
-```bash
-go get -u -d github.com/Azure/azure-storage-blob-go/...
-```
+| 서비스 | 패키지 |
+|---------|---------|
+| Blob Storage | [github.com/Azure/azure-storage-blob-go](https://github.com/Azure/azure-storage-blob-go) |
+| File Storage | [github.com/Azure/azure-storage-file-go](https://github.com/Azure/azure-storage-file-go) |
+| 이벤트 허브 | [github.com/Azure/azure-event-hubs-go](https://github.com/Azure/azure-event-hubs-go) |
+| Application Insights | [github.com/Microsoft/ApplicationInsights-go](https://github.com/Microsoft/ApplicationInsights-go) |
 
 ## <a name="vendor-the-azure-sdk-for-go"></a>Azure SDK for Go 공급하기
 
