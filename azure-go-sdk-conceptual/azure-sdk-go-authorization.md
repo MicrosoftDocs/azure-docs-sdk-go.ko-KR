@@ -17,6 +17,7 @@ ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32319886"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a><span data-ttu-id="e898d-103">Azure SDK for Go에서의 인증 방법</span><span class="sxs-lookup"><span data-stu-id="e898d-103">Authentication methods in the Azure SDK for Go</span></span>
 
