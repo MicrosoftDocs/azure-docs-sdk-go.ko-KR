@@ -15,6 +15,7 @@ ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
 ms.translationtype: HT
 ms.contentlocale: ko-KR
 ms.lasthandoff: 05/03/2018
+ms.locfileid: "32319699"
 ---
 # <a name="azure-sdk-for-go-samples-for-compute-and-networking"></a>계산 및 네트워킹을 위한 Azure SDK for Go 샘플
 
