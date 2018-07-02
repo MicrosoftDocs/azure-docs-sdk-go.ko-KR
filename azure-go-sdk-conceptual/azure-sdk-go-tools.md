@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 1e122ab161766023ea146329a5edb13143699b8b
-ms.sourcegitcommit: b81b17cbb934399c195bfdcb87137aee935f5234
+ms.openlocfilehash: 25b46e3a1636c39e261ba11c6f8939d8721cc693
+ms.sourcegitcommit: 79d216c6b0442d0f3b3660ff2a34dc8b2049390c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34755535"
+ms.lasthandoff: 06/29/2018
+ms.locfileid: "37093161"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>Azure SDK for Go 사용 개발자를 위한 도구
 
@@ -40,4 +40,4 @@ Visual Studio Code는 확장을 통해 Go 언어에 대해 포괄적인 지원�
 아직까지는 공식 솔루션이 없기 때문에 패키지 종속성을 관리하고 Go를 통한 공급 수행 방식은 여러 가지가 존재합니다. 이러한 관리를 수행하기 위해 권장되는 방법은 `dep` 종속성 관리자를 사용하는 것입니다. Azure SDK for Go는 dep를 사용하여 공급을 수행하며, dep를 사용하는 다른 프로젝트에 대해 종속성을 올바르게 가져오는 것으로 확인됩니다.
 
 > [!div class="nextstepaction"]
-> [dep 종속성 관리자 얻기](https://github.com/tools/godep)
+> [dep 종속성 관리자 얻기](https://github.com/golang/dep)
