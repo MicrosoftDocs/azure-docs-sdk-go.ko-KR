@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 25b46e3a1636c39e261ba11c6f8939d8721cc693
-ms.sourcegitcommit: 79d216c6b0442d0f3b3660ff2a34dc8b2049390c
+ms.openlocfilehash: 006d140bffb66fdd769a14511232d4ea5081811d
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37093161"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38066985"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>Azure SDK for Go 사용 개발자를 위한 도구
 
@@ -22,7 +22,7 @@ Go 코드를 효율적으로 작성하고 Azure 서비스와 원활하게 작동
 
 ## <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Azure 2.0 CLI는 구독에 Azure 리소스를 만들고 구성하기 위한 명령줄 인터페이스를 제공합니다. CLI는 공통 및 공유 Azure 리소스 구축을 빠르게 시작할 수 있도록 도와줌으로써 더 복잡한 서비스 사용에 집중할 수 있게 해줍니다. CLI에는 쿼리 및 필터링 기능이 포함되므로, 원하는 명령줄 도구로 출력을 직접 파이프할 수 있습니다. CLI는 Docker 이미지로 또는 [Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview)을 통해 로컬 시스템에 설치할 수 있도록 제공됩니다.
+Azure 2.0 CLI는 구독에 Azure 리소스를 만들고 구성하기 위한 명령줄 인터페이스를 제공합니다. CLI는 공통 및 공유 Azure 리소스 구축을 빠르게 시작할 수 있도록 도와줌으로써 더 복잡한 서비스 사용에 집중할 수 있게 해줍니다. CLI에는 쿼리 및 필터링 기능이 포함되므로, 원하는 명령줄 도구로 출력을 직접 파이프할 수 있습니다. CLI는 Docker 이미지로 또는 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)을 통해 로컬 시스템에 설치할 수 있도록 제공됩니다.
 
 > [!div class="nextstepaction"]
 > [Azure CLI 2.0 설치](/cli/azure/install-azure-cli)
