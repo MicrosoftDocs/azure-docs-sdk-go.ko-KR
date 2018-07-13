@@ -10,16 +10,16 @@ ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: virtual-machines
 ms.devlang: go
-ms.openlocfilehash: 1fbcc54df2a2aebce56c5a5800361f3d3aed1ccc
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 7592e8617436a76dd27cac5269971051982425bf
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32319937"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38067019"
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>빠른 시작: Azure SDK for Go를 사용하여 템플릿에서 Azure 가상 머신 배포
 
-이 빠른 시작에서는 Azure SDK for Go를 사용하여 템플릿에서 리소스를 배포하는 방법에 대해 자세히 다룹니다. 템플릿은 [Azure 리소스 그룹](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview) 내에 포함된 모든 리소스에 대한 스냅샷입니다. 과정을 진행하는 동안 유용한 작업을 수행하면서 SDK의 기능 및 규칙에 익숙해질 수 있습니다.
+이 빠른 시작에서는 Azure SDK for Go를 사용하여 템플릿에서 리소스를 배포하는 방법에 대해 자세히 다룹니다. 템플릿은 [Azure 리소스 그룹](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 내에 포함된 모든 리소스에 대한 스냅샷입니다. 과정을 진행하는 동안 유용한 작업을 수행하면서 SDK의 기능 및 규칙에 익숙해질 수 있습니다.
 
 이 빠른 시작을 마치면 가상 머신을 실행하고 사용자 이름 및 암호를 사용해서 로그인하게 됩니다.
 
@@ -35,8 +35,7 @@ Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서�
 
 ## <a name="create-a-service-principal"></a>서비스 주체 만들기
 
-
-응용 프로그램에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
+응용 프로그램으로 Azure에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --name az-go-vm-quickstart --sdk-auth > quickstart.auth

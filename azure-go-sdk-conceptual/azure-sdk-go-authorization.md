@@ -12,12 +12,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: 370f5607b89c0044022f7987d06c3a55c9d6f352
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: c7970167070bdf1f3fc75692f3e34268801c65df
+ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32319886"
+ms.lasthandoff: 07/11/2018
+ms.locfileid: "38067002"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go에서의 인증 방법
 
@@ -107,7 +107,7 @@ Azure Stack 메타 데이터 정보에서 이러한 변수를 검색할 수 있�
 | Development Kit | `https://management.local.azurestack.external/` |
 | 통합 시스템 | `https://management.(region).ext-(machine-name).(FQDN)` |
 
-Azure Stack에서 Azure SDK for Go를 사용하는 방법에 대한 자세한 내용은 [Azure Stack에서 Go를 사용한 API 버전 프로필 사용](https://docs.microsoft.com/en-us/azure/azure-stack/user/azure-stack-version-profiles-go)을 참조하세요.
+Azure Stack에서 Azure SDK for Go를 사용하는 방법에 대한 자세한 내용은 [Azure Stack에서 Go를 사용한 API 버전 프로필 사용](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)을 참조하세요.
 
 
 ## <a name="use-file-based-authentication"></a>파일 기반 인증 사용
@@ -131,7 +131,7 @@ authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoi
 
 ## <a name="use-device-token-authentication"></a>장치 토큰 인증 사용
 
-사용자가 대화형으로 로그인하도록 하려면 장치 토큰 인증을 통해 해당 기능을 제공하는 것이 가장 좋은 방법입니다. 이 인증 흐름에서 Microsoft 로그인 사이트에 붙여 넣을 토큰을 사용자에게 전달하면, 사용자가 이 로그인 사이트에서 AAD(Azure Active Directory) 계정을 사용하여 로그인합니다. 표준 사용자 이름/암호 인증과 달리, 이 인증 방법은 다단계 인증을 사용하도록 설정된 계정을 지원합니다.
+사용자가 대화형으로 로그인하도록 하려면 장치 토큰 인증을 통해 해당 기능을 제공하는 것이 가장 좋은 방법입니다. 이 인증 흐름에서 Microsoft 로그인 사이트에 붙여 넣을 토큰을 사용자에게 전달하면, 사용자가 이 로그인 사이트에서 AAD(Azure Active Directory) 계정을 사용하여 인증합니다. 표준 사용자 이름/암호 인증과 달리, 이 인증 방법은 다단계 인증을 사용하도록 설정된 계정을 지원합니다.
 
 장치 토큰 인증을 사용하려면 [NewDeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewDeviceFlowConfig) 함수를 사용하여 [DeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig) 권한 부여자를 만듭니다. 인증 프로세스를 시작하려면 결과 개체에서 [권한 부여자](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig.Authorizer)를 호출합니다. 전체 인증 흐름이 완료될 때까지 장치 흐름 인증에서 프로그램 실행을 차단합니다.
 
