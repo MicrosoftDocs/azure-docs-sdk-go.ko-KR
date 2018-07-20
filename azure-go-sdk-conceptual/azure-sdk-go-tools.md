@@ -4,28 +4,28 @@ description: Azure SDK for Go 및 Azure 서비스 작업을 위한 도구
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 01/30/2018
+ms.date: 07/13/2018
 ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 006d140bffb66fdd769a14511232d4ea5081811d
-ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
+ms.openlocfilehash: dfa3912ac13e6f6d52d607f9dcc150f3a5b57602
+ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38066985"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39039508"
 ---
 # <a name="tools-for-developers-using-the-azure-sdk-for-go"></a>Azure SDK for Go 사용 개발자를 위한 도구
 
 Go 코드를 효율적으로 작성하고 Azure 서비스와 원활하게 작동하기 위해 몇 가지 권장 도구가 제공됩니다.
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+## <a name="azure-cli"></a>Azure CLI
 
-Azure 2.0 CLI는 구독에 Azure 리소스를 만들고 구성하기 위한 명령줄 인터페이스를 제공합니다. CLI는 공통 및 공유 Azure 리소스 구축을 빠르게 시작할 수 있도록 도와줌으로써 더 복잡한 서비스 사용에 집중할 수 있게 해줍니다. CLI에는 쿼리 및 필터링 기능이 포함되므로, 원하는 명령줄 도구로 출력을 직접 파이프할 수 있습니다. CLI는 Docker 이미지로 또는 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)을 통해 로컬 시스템에 설치할 수 있도록 제공됩니다.
+Azure CLI는 구독에 Azure 리소스를 만들고 구성할 수 있는 명령줄 인터페이스를 제공합니다. CLI는 공통 및 공유 Azure 리소스 구축을 빠르게 시작할 수 있도록 도와줌으로써 더 복잡한 서비스 사용에 집중할 수 있게 해줍니다. CLI에는 쿼리 및 필터링 기능이 포함되므로, 원하는 명령줄 도구로 출력을 직접 파이프할 수 있습니다. CLI는 Docker 이미지로 또는 [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)을 통해 로컬 시스템에 설치할 수 있도록 제공됩니다.
 
 > [!div class="nextstepaction"]
-> [Azure CLI 2.0 설치](/cli/azure/install-azure-cli)
+> [Azure CLI 설치](/cli/azure/install-azure-cli)
 
 ## <a name="visual-studio-code"></a>Visual Studio Code
 
@@ -34,6 +34,13 @@ Visual Studio Code는 확장을 통해 Go 언어에 대해 포괄적인 지원�
 * [Visual Studio Code 설치](https://code.visualstudio.com/Download)
 * [Visual Studio Code Go 확장 얻기](https://code.visualstudio.com/docs/languages/go)
 * [Azure 도구 확장 얻기](https://marketplace.visualstudio.com/items?itemName=ms-vscode.vscode-azureextensionpack)
+
+## <a name="cicd-with-azure-devops-project"></a>Azure DevOps 프로젝트를 사용하는 CI/CD
+
+Azure DevOps 프로젝트 파이프라인을 사용하여 Go 응용 프로그램을 지속적으로 빌드 및 배포를 설정할 수 있습니다. 사용 가능한 git 리포지토리만 있으면 Azure 리소스에서 직접 배포하고 테스트하도록 설정할 수 있습니다. 구성 파이프라인은 쉽게 만들고 관리할 수 있으며 Azure에 직접 프로비저닝되므로 다른 Azure 리소스를 처리하는 것과 같은 방식으로 제어할 수 있습니다.
+
+> [!div class="nextstepaction"]
+> [Azure DevOps 프로젝트를 사용하여 CI/CD 파이프라인을 만드는 방법 알아보기](/devops-project/azure-devops-project-go)
 
 ## <a name="dependency-management-with-dep"></a>dep로 종속성 관리
 

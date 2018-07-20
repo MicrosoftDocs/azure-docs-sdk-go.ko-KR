@@ -12,12 +12,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: c7970167070bdf1f3fc75692f3e34268801c65df
-ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
+ms.openlocfilehash: f5e76fc745512a3a52172f560c3a24f510e96feb
+ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38067002"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39039542"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go에서의 인증 방법
 
@@ -30,19 +30,19 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 | 인증 유형 | 권장되는 경우... |
 |---------------------|---------------------|
 | 인증서 기반 인증 | AAD(Azure Active Directory) 사용자 또는 서비스 주체에 대해 구성된 X509 인증서가 있습니다. 자세한 내용은 [Azure Active Directory에서 인증서 기반 인증 시작]을 참조하세요. |
-| 클라이언트 자격 증명 | 이 응용 프로그램에 대해 설정된 구성된 서비스 주체가 있거나 해당 서비스 주체가 속한 응용 프로그램 클래스가 있습니다. 자세한 내용은 [Azure CLI 2.0에서 서비스 주체 만들기]를 참조하세요. |
+| 클라이언트 자격 증명 | 이 응용 프로그램에 대해 설정된 구성된 서비스 주체가 있거나 해당 서비스 주체가 속한 응용 프로그램 클래스가 있습니다. 자세한 내용은 [Azure CLI에서 서비스 주체 만들기]를 참조하세요. |
 | MSI(관리 서비스 ID) | 응용 프로그램이 MSI(관리 서비스 ID)로 구성된 Azure 리소스에서 실행됩니다. 자세한 내용은 [Azure 리소스용 MSI(관리 서비스 ID)]를 참조하세요. |
 | 장치 토큰 | 응용 프로그램이 대화형으로__만__ 사용되며 잠재적으로 여러 AAD 테넌트의 다양한 사용자가 이 응용 프로그램을 사용하게 됩니다. 사용자에게 로그인할 웹 브라우저에 대한 액세스 권한이 있습니다. 자세한 내용은 [장치 토큰 인증 사용](#use-device-token-authentication)을 참조하세요.|
 | 사용자 이름/암호 | 다른 인증 방법을 사용할 수 없는 대화형 응용 프로그램이 있습니다. 사용자에게 AAD 로그인에 대해 사용하도록 설정된 다단계 인증이 없습니다. |
 
 > [!IMPORTANT]
 > 클라이언트 자격 증명 외의 인증 유형을 사용하는 경우 응용 프로그램이 Azure Active Directory에 등록되어야 합니다. 자세한 내용은 [Azure Active Directory와 응용 프로그램 통합](/azure/active-directory/develop/active-directory-integrating-applications)을 참조하세요.
-
+>
 > [!NOTE]
 > 특별한 요구 사항이 없으면 사용자 이름/암호 인증을 사용하지 마십시오. 사용자 기반 로그인이 적절한 경우에는 일반적으로 장치 토큰 인증을 대신 사용할 수 있습니다.
 
 [Azure Active Directory에서 인증서 기반 인증 시작]: /azure/active-directory/active-directory-certificate-based-authentication-get-started
-[Azure CLI 2.0에서 서비스 주체 만들기]: /cli/azure/create-an-azure-service-principal-azure-cli
+[Azure CLI에서 서비스 주체 만들기]: /cli/azure/create-an-azure-service-principal-azure-cli
 [Azure 리소스용 MSI(관리 서비스 ID)]: /azure/active-directory/managed-service-identity/overview
 
 이러한 인증 유형은 다양한 방법을 통해 사용할 수 있습니다. [_환경 기반 인증_](#use-environment-based-authentication)은 프로그램의 환경에서 직접 자격 증명을 읽습니다. [_파일 기반 인증_](#use-file-based-authentication)은 서비스 주체 자격 증명을 포함하는 파일을 로드합니다. [_클라이언트 기반 인증_](#use-an-authentication-client)은 Go 코드의 개체를 사용하며 프로그램 실행 중에 사용자가 자격 증명을 제공해야 합니다. 마지막으로, [_장치 토큰 인증_](#use-device-token-authentication)은 사용자가 토큰을 사용하여 웹 브라우저를 통해 대화형으로 로그인해야 하며 환경 또는 파일 기반 인증과 함께 사용할 수는 없습니다.
@@ -54,7 +54,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 
 ## <a name="use-environment-based-authentication"></a>환경 기반 인증 사용
 
-컨테이너와 같이 밀접하게 제어된 환경에서 응용 프로그램을 실행하는 경우, 환경 기반 인증은 자연스러운 선택입니다. 응용 프로그램을 실행하기 전에 사용자가 셸 환경을 구성하면 Go SDK에서 런타임 시 이러한 환경 변수를 읽어 Azure에서 인증합니다. 
+컨테이너와 같이 밀접하게 제어된 환경에서 응용 프로그램을 실행하는 경우, 환경 기반 인증은 자연스러운 선택입니다. 응용 프로그램을 실행하기 전에 사용자가 셸 환경을 구성하면 Go SDK에서 런타임 시 이러한 환경 변수를 읽어 Azure에서 인증합니다.
 
 환경 기반 인증은 장치 토큰을 제외한 모든 인증 방법에 대해 지원되며 클라이언트 자격 증명, 인증서, 사용자 이름/암호, MSI(관리 서비스 ID)의 순서로 평가됩니다. 필요한 환경 변수가 설정 해제되었거나 SDK가 인증 서비스에서 거절되는 경우, 그 다음 인증 유형을 시도합니다. SDK가 해당 환경에서 인증할 수 없는 경우에는 오류를 반환합니다.
 
@@ -109,10 +109,9 @@ Azure Stack 메타 데이터 정보에서 이러한 변수를 검색할 수 있�
 
 Azure Stack에서 Azure SDK for Go를 사용하는 방법에 대한 자세한 내용은 [Azure Stack에서 Go를 사용한 API 버전 프로필 사용](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-version-profiles-go)을 참조하세요.
 
-
 ## <a name="use-file-based-authentication"></a>파일 기반 인증 사용
 
-파일 기반 인증은 클라이언트 자격 증명이 [Azure CLI 2.0](/cli/azure)에서 생성된 로컬 파일 형식으로 저장된 경우 해당 자격 증명으로만 작동됩니다. `--sdk-auth` 매개 변수를 사용하여 새 서비스 주체를 만들 때 이 파일을 쉽게 만들 수 있습니다. 파일 기반 인증을 사용하려고 계획하는 경우 서비스 주체를 만들 때 이 인수가 제공되도록 해야 합니다. CLI에서는 출력을 `stdout`에 인쇄하므로 출력을 파일로 리디렉션합니다.
+파일 기반 인증은 클라이언트 자격 증명이 [Azure CLI](/cli/azure)에서 생성된 로컬 파일 형식으로 저장된 경우 해당 자격 증명으로만 작동됩니다. `--sdk-auth` 매개 변수를 사용하여 새 서비스 주체를 만들 때 이 파일을 쉽게 만들 수 있습니다. 파일 기반 인증을 사용하려고 계획하는 경우 서비스 주체를 만들 때 이 인수가 제공되도록 해야 합니다. CLI에서는 출력을 `stdout`에 인쇄하므로 출력을 파일로 리디렉션합니다.
 
 ```azurecli
 az ad sp create-for-rbac --sdk-auth > azure.auth
@@ -127,7 +126,7 @@ import "github.com/Azure/go-autorest/autorest/azure/auth"
 authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoint)
 ```
 
-서비스 주체 사용 및 액세스 권한 관리에 대한 자세한 내용은 [Azure CLI 2.0에서 서비스 주체 만들기]를 참조하세요.
+서비스 주체 사용 및 액세스 권한 관리에 대한 자세한 내용은 [Azure CLI에서 서비스 주체 만들기]를 참조하세요.
 
 ## <a name="use-device-token-authentication"></a>장치 토큰 인증 사용
 

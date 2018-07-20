@@ -4,18 +4,18 @@ description: Azure SDK for Go를 사용하여 가상 머신을 배포합니다.
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 04/03/2018
+ms.date: 07/13/2018
 ms.topic: quickstart
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: virtual-machines
 ms.devlang: go
-ms.openlocfilehash: 7592e8617436a76dd27cac5269971051982425bf
-ms.sourcegitcommit: 181d4e0b164cf39b3feac346f559596bd19c94db
+ms.openlocfilehash: 6b1de35748fb7694d45715fa7f028d5730530d2e
+ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38067019"
+ms.lasthandoff: 07/14/2018
+ms.locfileid: "39039559"
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>빠른 시작: Azure SDK for Go를 사용하여 템플릿에서 Azure 가상 머신 배포
 
@@ -27,9 +27,9 @@ ms.locfileid: "38067019"
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서는 CLI 버전 __2.0.28__ 이상이 필요합니다. `az --version`을(를) 실행하여 CLI 설치가 이 요구 사항을 충족하는지 확인하십시오. 설치 또는 업그레이드가 필요한 경우에는 [Azure CLI 2.0 설치](/cli/azure/install-azure-cli)를 참조하십시오.
+Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서는 CLI 버전 __2.0.28__ 이상이 필요합니다. `az --version`을(를) 실행하여 CLI 설치가 이 요구 사항을 충족하는지 확인하십시오. 설치 또는 업그레이드를 해야 할 경우 [Azure CLI 설치](/cli/azure/install-azure-cli)를 참조하세요.
 
-## <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치 
+## <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
 [!INCLUDE [azure-sdk-go-get](includes/azure-sdk-go-get.md)]
 
@@ -242,7 +242,9 @@ func createDeployment() (deployment resources.DeploymentExtended, err error) {
     }
 ```
 
-이 코드는 리소스 그룹을 만들 때와 동일한 패턴을 따릅니다. 새로운 클라이언트가 생성되고 Azure에서 인증을 수행할 수 있는 기능이 제공된 다음, 메서드가 호출됩니다. 이 메서드도 리소스 그룹의 해당 메서드와 동일한 이름(`CreateOrUpdate`)을 갖습니다. 이 패턴은 SDK 전체에서 나타납니다. 일반적으로 비슷한 작업을 수행하는 메서드는 동일한 이름을 갖습니다.
+이 코드는 리소스 그룹을 만들 때와 동일한 패턴을 따릅니다. 새로운 클라이언트가 생성되고 Azure에서 인증을 수행할 수 있는 기능이 제공된 다음, 메서드가 호출됩니다.
+이 메서드도 리소스 그룹의 해당 메서드와 동일한 이름(`CreateOrUpdate`)을 갖습니다. 이 패턴은 SDK 전체에서 나타납니다.
+일반적으로 비슷한 작업을 수행하는 메서드는 동일한 이름을 갖습니다.
 
 가장 큰 차이점은 `deploymentsClient.CreateOrUpdate` 메서드의 반환 값에 있습니다. 이 값은 [미래 디자인 패턴](https://en.wikipedia.org/wiki/Futures_and_promises)을 따르는 [미래](https://godoc.org/github.com/Azure/go-autorest/autorest/azure#Future) 형식입니다. 미래는 Azure에서 완료 시 폴링, 취소 또는 차단할 수 있는 장기 실행 작업을 나타냅니다.
 
