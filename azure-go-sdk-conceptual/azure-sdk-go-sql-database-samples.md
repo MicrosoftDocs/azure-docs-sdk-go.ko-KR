@@ -10,12 +10,12 @@ ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: sql-database
 ms.devlang: go
-ms.openlocfilehash: faeb4a524303d2a7985d1a657171a8bbc681ace5
-ms.sourcegitcommit: f08abf902b48f8173aa6e261084ff2cfc9043305
+ms.openlocfilehash: 17eab667721acace20bab79b8290d1031292be12
+ms.sourcegitcommit: 0f581979216f7c9d4913681a6d9f6fe09af26e43
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32319801"
+ms.lasthandoff: 08/02/2018
+ms.locfileid: "39475894"
 ---
 # <a name="azure-sdk-for-go-samples-for-azure-sql-database"></a>Azure SQL Database를 위한 Azure SDK for Go 샘플
 
@@ -26,4 +26,3 @@ Azure SDK for Go의 모든 샘플은 [GitHub](https://github.com/Azure-Samples/a
 | Name | 설명 |
 |------|-------------|
 | [sql/sql](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/sql/sql.go) | 새 SQL 서버를 만들어 관리하며 이 서버의 데이터베이스로 작업합니다. |
-| [sql/queries](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/sql/queries.go) | Azure SQL Database에서 표를 만들고, 행을 추가하고 데이터를 쿼리합니다. |
