@@ -4,30 +4,32 @@ description: Azure SDK for Go를 사용하여 가상 머신을 배포합니다.
 author: sptramer
 ms.author: sttramer
 manager: carmonm
-ms.date: 07/13/2018
+ms.date: 09/05/2018
 ms.topic: quickstart
-ms.prod: azure
 ms.technology: azure-sdk-go
 ms.service: virtual-machines
 ms.devlang: go
-ms.openlocfilehash: 6b1de35748fb7694d45715fa7f028d5730530d2e
-ms.sourcegitcommit: d1790b317a8fcb4d672c654dac2a925a976589d4
+ms.openlocfilehash: a7970be0857fd414d776241b033af0c23457790c
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39039559"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059138"
 ---
 # <a name="quickstart-deploy-an-azure-virtual-machine-from-a-template-with-the-azure-sdk-for-go"></a>빠른 시작: Azure SDK for Go를 사용하여 템플릿에서 Azure 가상 머신 배포
 
-이 빠른 시작에서는 Azure SDK for Go를 사용하여 템플릿에서 리소스를 배포하는 방법에 대해 자세히 다룹니다. 템플릿은 [Azure 리소스 그룹](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) 내에 포함된 모든 리소스에 대한 스냅샷입니다. 과정을 진행하는 동안 유용한 작업을 수행하면서 SDK의 기능 및 규칙에 익숙해질 수 있습니다.
+이 빠른 시작은 Go용 Azure SDK를 사용하여 Azure Resource Manager 템플릿에서 리소스를 배포하는 방법을 보여줍니다. 템플릿은 [Azure 리소스 그룹](/azure/azure-resource-manager/resource-group-overview) 내의 모든 리소스에 대한 스냅샷입니다. 과정을 진행하는 동안 SDK의 기능 및 규칙에 익숙해질 수 있습니다.
 
 이 빠른 시작을 마치면 가상 머신을 실행하고 사용자 이름 및 암호를 사용해서 로그인하게 됩니다.
+
+> [!NOTE]
+> Resource Manager 템플릿을 사용하지 않고 Go에서 VM 생성하는 방법을 보려면 SDK로 모든 VM 리소스를 만들고 구성하는 방법을 보여주는 [필수 예제](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/compute/vm.go)가 있습니다. 이 예제에서 템플릿을 사용하면 Azure 서비스 아키텍처에 대한 세부 정보를 너무 많이 알아보지 않고도 SDK 규칙에 중점을 둘 수 있습니다.
 
 [!INCLUDE [quickstarts-free-trial-note](includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](includes/cloud-shell-try-it.md)]
 
-Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서는 CLI 버전 __2.0.28__ 이상이 필요합니다. `az --version`을(를) 실행하여 CLI 설치가 이 요구 사항을 충족하는지 확인하십시오. 설치 또는 업그레이드를 해야 할 경우 [Azure CLI 설치](/cli/azure/install-azure-cli)를 참조하세요.
+Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서는 CLI 버전 __2.0.28__ 이상이 필요합니다. `az --version`을(를) 실행하여 CLI 설치가 이 요구 사항을 충족하는지 확인하십시오. 설치 또는 업그레이드가 필요한 경우, [Azure CLI 설치](/cli/azure/install-azure-cli)를 참조하세요.
 
 ## <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -38,7 +40,7 @@ Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서�
 응용 프로그램으로 Azure에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
 
 ```azurecli-interactive
-az ad sp create-for-rbac --name az-go-vm-quickstart --sdk-auth > quickstart.auth
+az ad sp create-for-rbac --sdk-auth > quickstart.auth
 ```
 
 환경 변수 `AZURE_AUTH_LOCATION`을 이 파일의 전체 경로가 되도록 설정합니다. 그러면 어떠한 변경을 하거나 서비스 주체로부터 정보를 기록하지 않아도 SDK가 이 파일에서 직접 자격 증명을 찾아서 읽습니다.
@@ -62,13 +64,7 @@ cd $GOPATH/src/github.com/azure-samples/azure-sdk-for-go-samples/quickstarts/dep
 go run main.go
 ```
 
-배포 중 오류가 발생하면 자세한 설명은 없지만, 문제가 있음을 나타내는 메시지가 표시됩니다. Azure CLI에서 다음 명령을 사용하여 배포 오류에 대한 완전한 세부 정보를 가져옵니다.
-
-```azurecli-interactive
-az group deployment show -g GoVMQuickstart -n VMDeployQuickstart
-```
-
-배포가 성공하면 새롭게 생성된 가상 머신에 로그인하기 위한 사용자 이름, IP 주소 및 암호를 제공하는 메시지가 표시됩니다. 이 시스템에 SSH로 로그인하여 시스템이 작동되어 실행 중인지 확인합니다.
+배포가 성공하면 새롭게 생성된 가상 머신에 로그인하기 위한 사용자 이름, IP 주소 및 암호를 제공하는 메시지가 표시됩니다. 이 시스템에 SSH로 로그인하여 시스템이 작동되어 실행 중인지 알아봅니다. 
 
 ## <a name="cleaning-up"></a>정리
 
@@ -77,6 +73,18 @@ CLI를 사용해서 리소스 그룹을 삭제하여 이 빠른 시작 중 생�
 ```azurecli-interactive
 az group delete -n GoVMQuickstart
 ```
+
+또한 만든 서비스 주체를 삭제합니다. `quickstart.auth` 파일에 `clientId`에 대한 JSON 키가 있습니다. 이 값을 `CLIENT_ID_VALUE` 환경 변수에 복사하고 다음 Azure CLI 명령을 실행합니다.
+
+```azurecli-interactive
+az ad sp delete --id ${CLIENT_ID_VALUE}
+```
+
+여기서 `quickstart.auth`로부터 `CLIENT_ID_VALUE`에 대한 값을 제공합니다.
+
+> [!WARNING]
+> 이 응용 프로그램의 서비스 주체를 삭제하지 못하면 Azure Active Directory 테넌트를 활성 상태로 두게 됩니다.
+> 서비스 보안 주체의 이름과 암호는 모두 UUID로 생성되지만, 사용하지 않는 서비스 주체와 Azure Active Directory 응용 프로그램을 삭제하여 모범 보안 관행을 따르도록 하십시오.
 
 ## <a name="code-in-depth"></a>코드 심화 안내
 
@@ -111,7 +119,7 @@ var (
 
 값은 생성된 리소스의 이름을 제공하도록 선언됩니다. 또한 여기에 지정된 위치는 다른 데이터 센터에서의 배포 동작을 확인할 수 있도록 변경할 수 있습니다. 일부 데이터 센터에는 필요한 리소스가 없을 수도 있습니다.
 
-`clientInfo` 형식은 SDK에서 클라이언트를 설정하고 VM 암호를 설정하기 위해 인증 파일에서 독립적으로 로드해야 하는 모든 정보를 캡슐화하도록 선언됩니다.
+`clientInfo` 형식은 SDK에서 클라이언트를 설정하고 VM 암호를 설정하기 위해 인증 파일에서 로딩된 정보를 가지고 있습니다.
 
 `templateFile` 및 `parametersFile` 상수는 배포에 필요한 파일을 가리킵니다. `authorizer`는 인증을 위해 Go SDK를 통해 구성되며 `ctx` 변수는 네트워크 작업에 대한 [Go 컨텍스트](https://blog.golang.org/context)입니다.
 
@@ -170,7 +178,7 @@ func main() {
 * 이 그룹(`createDeployment`) 내에 배포 만들기
 * 배포된 가상 머신(`getLogin`)에 대한 로그인 정보 가져오기 및 표시
 
-### <a name="creating-the-resource-group"></a>리소스 그룹 만들기
+### <a name="create-the-resource-group"></a>리소스 그룹 만들기
 
 `createGroup` 함수는 리소스 그룹을 만듭니다. 호출 흐름 및 인수를 보면 서비스 상호 작용이 SDK에 구성된 방식을 알 수 있습니다.
 
@@ -197,7 +205,7 @@ Azure 서비스와의 일반적인 상호 작용 흐름은 다음과 같습니�
 
 `groupsClient.CreateOrUpdate` 메서드는 리소스 그룹을 나타내는 데이터 형식에 대한 포인터를 반환합니다. 이러한 종류의 직접 반환 값은 동기적으로 수행되어야 하는 단기 실행 작업을 나타냅니다. 다음 섹션에서는 장기 실행 작업의 예 및 이와 상호 작용하는 방법을 배웁니다.
 
-### <a name="performing-the-deployment"></a>배포 수행
+### <a name="perform-the-deployment"></a>배포 수행
 
 리소스 그룹을 만든 다음에는 배포를 실행해야 합니다. 이 코드는 여러 논리 부분을 강조하기 위해 더 작은 섹션으로 구분됩니다.
 
@@ -254,20 +262,13 @@ func createDeployment() (deployment resources.DeploymentExtended, err error) {
     if err != nil {
         return
     }
-    deployment, err = deploymentFuture.Result(deploymentsClient)
-
-    // Work around possible bugs or late-stage failures
-    if deployment.Name == nil || err != nil {
-        deployment, _ = deploymentsClient.Get(ctx, resourceGroupName, deploymentName)
-    }
-    return
+    return deploymentFuture.Result(deploymentsClient)
+}
 ```
 
 이 예에서 수행할 최상의 작업은 이 작업이 완료될 때까지 기다리는 것입니다. 미래 개체를 기다리기 위해서는 [컨텍스트 개체](https://blog.golang.org/context) 및 `Future`를 생성한 클라이언트가 모두 필요합니다. 여기에서 가능한 두 가지 오류 소스는 메서드를 호출하려고 시도할 때 클라이언트 측에서 발생한 오류와 서버에서의 오류 응답입니다. 후자는 `deploymentFuture.Result` 호출 중에 반환됩니다.
 
-배포 정보를 검색한 후 배포 정보가 비어 있는 버그가 발생할 경우 `deploymentsClient.Get` 수동 호출을 통해 데이터를 채울 수 있는 해결 방법이 있습니다.
-
-### <a name="obtaining-the-assigned-ip-address"></a>할당된 IP 주소 가져오기
+### <a name="get-the-assigned-ip-address"></a>할당된 IP 주소 가져오기
 
 새로 만든 가상 머신에서 어떤 작업을 수행하려면 할당된 IP 주소가 필요합니다. IP 주소는 NIC(네트워크 인터페이스 컨트롤러) 리소스에 바인딩된 고유의 개별 Azure 리소스입니다.
 
@@ -301,7 +302,7 @@ VM 사용자에 대한 값은 JSON에서도 로드됩니다. 이전에는 VM 암
 
 ## <a name="next-steps"></a>다음 단계
 
-이 빠른 시작에서는 기존 템플릿을 사용해서 Go를 통해 배포했습니다. 그런 다음 SSH를 통해 새롭게 생성된 가상 머신에 연결하여 실행하는지 확인했습니다.
+이 빠른 시작에서는 기존 템플릿을 사용해서 Go를 통해 배포했습니다. 그런 다음 SSH를 통해 새롭게 생성된 가상 머신에 연결했습니다.
 
 Go를 사용한 Azure 환경에서 가상 머신을 사용하는 방법에 대해 학습을 계속하려면 [Go용 Azure 컴퓨팅 샘플](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute) 또는 [Go용 Azure 리소스 관리 샘플](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/resources)을 참조하십시오.
 

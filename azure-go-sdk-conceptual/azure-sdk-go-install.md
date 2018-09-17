@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 3388359bba791c87025b6ffd0e6b476f95589f73
-ms.sourcegitcommit: 81e97407e6139375bf7357045e818c87a17dcde1
+ms.openlocfilehash: 013a771345d96f0fa8dbece3218a01650744f70b
+ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36262983"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44059189"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -37,9 +37,9 @@ Azure SDK for Go 시작! SDK를 사용하면 Go 응용 프로그램에서 Azure 
 
 ## <a name="vendor-the-azure-sdk-for-go"></a>Azure SDK for Go 공급하기
 
-Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. `dep` 지원을 사용하려면 `github.com/Azure/azure-sdk-for-go`을(를) `Gopkg.toml`의 `[[constraint]]` 섹션에 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
+Azure SDK for Go는 [dep](https://github.com/golang/dep)를 통해 공급할 수 있습니다. 안정성을 위해서는 공급 방식이 권장됩니다. 고유한 프로젝트에 `dep`를 사용하려면 `Gopkg.toml`의 `[[constraint]]` 섹션에 `github.com/Azure/azure-sdk-for-go`를 추가합니다. 예를 들어 버전 `14.0.0`에 공급하려면 다음 항목을 추가합니다.
 
-```
+```toml
 [[constraint]]
 name = "github.com/Azure/azure-sdk-for-go"
 version = "14.0.0"
@@ -62,13 +62,14 @@ GoDoc에서 제공되는 전체 모듈 목록에서는 [사용 가능한 서비�
 [autorest/adal]: https://godoc.org/github.com/Azure/go-autorest/autorest/adal
 [autorest/to]: https://godoc.org/github.com/Azure/go-autorest/autorest/to
 
-Azure 서비스를 위한 모듈은 해당 모듈을 위한 SDK API에서 개별적으로 제공됩니다. 이러한 버전은 모듈 가져오기 경로에 속하며 _서비스 버전_ 또는 _프로필_로 제공됩니다. 현재까지는 개발 및 릴리스 용도의 특정 서비스 버전을 사용하는 것이 좋습니다. 서비스는 `services` 모듈 아래에 있습니다. 가져오기의 전체 경로는 서비스 이름과 `YYYY-MM-DD` 형식의 버전 그리고 다시 서비스 이름으로 구성됩니다. 예를 들어 Compute 서비스의 `2017-03-30` 버전을 포함하기 위해서는 다음과 같습니다.
+Go 패키지 및 Azure 서비스는 독립적으로 버전 관리됩니다. 서비스 버전은 `services` 모듈 아래의 모듈 가져오기 경로의 일부입니다. 모듈의 전체 경로는 서비스 이름과 `YYYY-MM-DD` 형식의 버전 그리고 다시 서비스 이름으로 구성됩니다. 예를 들어 Compute 서비스의 `2017-03-30` 버전을 가져오기 위해서는 다음과 같습니다.
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-03-30/compute"
 ```
 
-현재까지는 특별한 이유가 없는 한 최신 서비스 버전을 사용하는 것이 좋습니다.
+개발을 시작할 때 서비스의 최신 버전을 사용하고 일관되게 유지하는 것이 좋습니다.
+Go SDK 업데이트가 없더라도 버전이 다르면 서비스 요구 사항이 변경되어 코드가 손상될 수도 있습니다.
 
 서비스에 대해 총체적 스냅샷이 필요한 경우 단일 프로필 버전을 선택할 수도 있습니다. 현재까지 유일하게 잠긴 프로필은 버전 `2017-03-09`이며, 여기에는 최신 서비스 기능이 포함되지 않았을 수 있습니다. 프로필은 `profiles` 모듈 아래에 있으며, 버전이 `YYYY-MM-DD` 형식으로 표시되어 있습니다. 서비스는 해당 프로필 버전 아래에 그룹화되어 있습니다. 예를 들어 `2017-03-09` 프로필에서 Azure 리소스 관리 모듈을 가져오려면:
 
