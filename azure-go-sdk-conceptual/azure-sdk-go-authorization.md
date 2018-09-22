@@ -11,12 +11,12 @@ ms.technology: azure-sdk-go
 ms.devlang: go
 ms.service: active-directory
 ms.component: authentication
-ms.openlocfilehash: 28fd4a4c0832ab19dcf52dc549d0ddc0d1eec6f1
-ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
+ms.openlocfilehash: 8f94b9ba715c32263d324306cce69bd484c05702
+ms.sourcegitcommit: c435f6602524565d340aac5506be5e955e78f16c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44059104"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44711977"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go에서의 인증 방법
 
@@ -30,7 +30,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 |---------------------|---------------------|
 | 인증서 기반 인증 | AAD(Azure Active Directory) 사용자 또는 서비스 주체에 대해 구성된 X509 인증서가 있습니다. 자세한 내용은 [Azure Active Directory에서 인증서 기반 인증 시작]을 참조하세요. |
 | 클라이언트 자격 증명 | 이 응용 프로그램에 대해 설정된 구성된 서비스 주체가 있거나 해당 서비스 주체가 속한 응용 프로그램 클래스가 있습니다. 자세한 내용은 [Azure CLI에서 서비스 주체 만들기]를 참조하세요. |
-| MSI(관리 서비스 ID) | 응용 프로그램이 MSI(관리 서비스 ID)로 구성된 Azure 리소스에서 실행됩니다. 자세한 내용은 [Azure 리소스용 MSI(관리 서비스 ID)]를 참조하세요. |
+| Azure 리소스에 대한 관리 ID | 관리 ID로 구성된 Azure 리소스에서 응용 프로그램을 실행하는 중입니다. 자세히 알아보려면 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
 | 장치 토큰 | 응용 프로그램을 대화형으로__만__ 사용해야 합니다. 사용자에게 활성화된 다단계 인증이 있을 수 있습니다. 사용자에게 로그인할 웹 브라우저에 대한 액세스 권한이 있습니다. 자세한 내용은 [장치 토큰 인증 사용](#use-device-token-authentication)을 참조하세요.|
 | 사용자 이름/암호 | 다른 인증 방법을 사용할 수 없는 대화형 응용 프로그램이 있습니다. 사용자에게 AAD 로그인에 대해 사용하도록 설정된 다단계 인증이 없습니다. |
 
@@ -42,7 +42,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 
 [Azure Active Directory에서 인증서 기반 인증 시작]: /azure/active-directory/active-directory-certificate-based-authentication-get-started
 [Azure CLI에서 서비스 주체 만들기]: /cli/azure/create-an-azure-service-principal-azure-cli
-[Azure 리소스용 MSI(관리 서비스 ID)]: /azure/active-directory/managed-service-identity/overview
+[Azure 리소스에 대한 관리 ID]: /azure/active-directory/managed-identities-azure-resources/overview
 
 이러한 인증 유형은 다양한 방법을 통해 사용할 수 있습니다.
 
@@ -65,7 +65,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 * 클라이언트 자격 증명
 * X509 인증서
 * 사용자 이름/암호
-* MSI(관리 서비스 ID)
+* Azure 리소스에 대한 관리 ID
 
 인증 유형에 설정되지 않은 값이 있거나 인증 유형이 거부된 경우 SDK는 자동으로 다음 인증 유형을 시도합니다. 시도할 수 있는 유형이 더 이상 없는 경우 SDK는 오류를 반환합니다.
 
@@ -84,7 +84,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 | | `AZURE_CLIENT_ID` | 응용 프로그램 클라이언트 ID입니다. |
 | | `AZURE_USERNAME` | 로그인에 사용하는 사용자 이름입니다. |
 | | `AZURE_PASSWORD` | 로그인에 사용하는 암호입니다. |
-| __MSI__ | | MSI 인증에 자격 증명이 필요하지 않습니다. 응용 프로그램은 MSI를 사용하도록 구성된 Azure 리소스에서 실행되어야 합니다. 자세한 내용은 [Azure 리소스용 MSI(관리 서비스 ID)]를 참조하세요. |
+| __관리 ID__ | | 관리 ID 인증에 자격 증명이 필요하지 않습니다. 관리 ID를 사용하도록 구성된 Azure 리소스에서 응용 프로그램을 실행해야 합니다. 자세한 내용은 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
 
 또한 기본 Azure 공용 클라우드가 아닌 다른 클라우드 또는 관리 엔드포인트에 연결하려면, 다음과 같은 환경 변수를 설정합니다. 가장 일반적인 이유는 Azure Stack, 지리적으로 다른 지역의 클라우드 또는 클래식 배포 모델을 사용하는 경우입니다.
 
@@ -168,7 +168,7 @@ authorizer, err := deviceConfig.Authorizer()
 |---------------------|-----------------------|
 | 인증서 기반 인증 | [ClientCertificateConfig] |
 | 클라이언트 자격 증명 | [ClientCredentialsConfig] |
-| MSI(관리 서비스 ID) | [MSIConfig] |
+| Azure 리소스에 대한 관리 ID | [MSIConfig] |
 | 사용자 이름/암호 | [UsernamePasswordConfig] |
 
 [ClientCertificateConfig]: https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#ClientCertificateConfig
