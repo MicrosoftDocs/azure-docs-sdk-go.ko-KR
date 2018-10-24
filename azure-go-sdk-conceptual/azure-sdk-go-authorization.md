@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.technology: azure-sdk-go
 ms.devlang: go
 ms.component: authentication
-ms.openlocfilehash: f5c2c56e43828f0bedad0b5781dc71991ce1fd3e
-ms.sourcegitcommit: 172f81dd6e4c6a275dc8031815aa87cdb488cbf0
+ms.openlocfilehash: c2c3dccfa8da5cfe57fee0b90139002068982560
+ms.sourcegitcommit: 887b15afcdeaf926a5f3d21b64e4045167fd062c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47231678"
+ms.lasthandoff: 10/21/2018
+ms.locfileid: "49481985"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go에서의 인증 방법
 
@@ -70,20 +70,21 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 
 다음 표에서는 환경 기반 인증에서 지원하는 각 인증 유형에 대해 설정해야 하는 환경 변수를 자세히 설명합니다.
 
-| 인증 유형 | 환경 변수 | 설명 |
-| ------------------- | -------------------- | ----------- |
-| __클라이언트 자격 증명__ | `AZURE_TENANT_ID` | 서비스 주체가 속하는 Active Directory 테넌트의 ID입니다. |
-| | `AZURE_CLIENT_ID` | 서비스 주체의 이름 또는 ID입니다. |
-| | `AZURE_CLIENT_SECRET` | 서비스 사용자와 연결된 비밀입니다. |
-| __인증서__ | `AZURE_TENANT_ID` | 인증서가 등록된 Active Directory 테넌트의 ID입니다. |
-| | `AZURE_CLIENT_ID` | 인증서와 연결된 응용 프로그램 클라이언트 ID입니다. |
-| | `AZURE_CERTIFICATE_PATH` | 클라이언트 인증서 파일 경로입니다. |
-| | `AZURE_CERTIFICATE_PASSWORD` | 클라이언트 인증서에 대한 암호입니다. |
-| __사용자 이름/암호__ | `AZURE_TENANT_ID` | 사용자가 속하는 Active Directory 테넌트의 ID입니다. |
-| | `AZURE_CLIENT_ID` | 응용 프로그램 클라이언트 ID입니다. |
-| | `AZURE_USERNAME` | 로그인에 사용하는 사용자 이름입니다. |
-| | `AZURE_PASSWORD` | 로그인에 사용하는 암호입니다. |
-| __관리 ID__ | | 관리 ID 인증에 자격 증명이 필요하지 않습니다. 관리 ID를 사용하도록 구성된 Azure 리소스에서 응용 프로그램을 실행해야 합니다. 자세한 내용은 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
+
+|  인증 유형   |     환경 변수     |                                                                                                     설명                                                                                                      |
+|------------------------|------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **클라이언트 자격 증명** |      `AZURE_TENANT_ID`       |                                                                    서비스 주체가 속하는 Active Directory 테넌트의 ID입니다.                                                                     |
+|                        |      `AZURE_CLIENT_ID`       |                                                                                       서비스 주체의 이름 또는 ID입니다.                                                                                       |
+|                        |    `AZURE_CLIENT_SECRET`     |                                                                                  서비스 사용자와 연결된 비밀입니다.                                                                                   |
+|    **인증서**     |      `AZURE_TENANT_ID`       |                                                                   인증서가 등록된 Active Directory 테넌트의 ID입니다.                                                                    |
+|                        |      `AZURE_CLIENT_ID`       |                                                                              인증서와 연결된 응용 프로그램 클라이언트 ID입니다.                                                                              |
+|                        |   `AZURE_CERTIFICATE_PATH`   |                                                                                       클라이언트 인증서 파일 경로입니다.                                                                                       |
+|                        | `AZURE_CERTIFICATE_PASSWORD` |                                                                                       클라이언트 인증서에 대한 암호입니다.                                                                                       |
+| **사용자 이름/암호**  |      `AZURE_TENANT_ID`       |                                                                           사용자가 속하는 Active Directory 테넌트의 ID입니다.                                                                           |
+|                        |      `AZURE_CLIENT_ID`       |                                                                                              응용 프로그램 클라이언트 ID입니다.                                                                                              |
+|                        |       `AZURE_USERNAME`       |                                                                                            로그인에 사용하는 사용자 이름입니다.                                                                                             |
+|                        |       `AZURE_PASSWORD`       |                                                                                            로그인에 사용하는 암호입니다.                                                                                             |
+|  **관리 ID**  |                              | 관리 ID 인증에 자격 증명이 필요하지 않습니다. 관리 ID를 사용하도록 구성된 Azure 리소스에서 응용 프로그램을 실행해야 합니다. 자세한 내용은 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
 
 또한 기본 Azure 공용 클라우드가 아닌 다른 클라우드 또는 관리 엔드포인트에 연결하려면, 다음과 같은 환경 변수를 설정합니다. 가장 일반적인 이유는 Azure Stack, 지리적으로 다른 지역의 클라우드 또는 클래식 배포 모델을 사용하는 경우입니다.
 
