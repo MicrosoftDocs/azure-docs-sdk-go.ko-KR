@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.prod: azure
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.openlocfilehash: 013a771345d96f0fa8dbece3218a01650744f70b
-ms.sourcegitcommit: 8b9e10b960150dc08f046ab840d6a5627410db29
+ms.openlocfilehash: 7990ec8bde5622078aa822fc7e66ba5c4384d682
+ms.sourcegitcommit: 3d26b464f196f8675c636ae792637d4c882fb92c
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44059189"
+ms.lasthandoff: 11/27/2018
+ms.locfileid: "52337146"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
@@ -90,7 +90,7 @@ Azure SDK for Go 사용을 시작하려면 빠른 시작을 참조하십시오.
 
 Go SDK에서 직접 다른 서비스를 시작하려면, 제공되는 샘플 코드 중 일부를 참조하십시오.
 
-* [Azure 서비스를 사용하여 인증](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/iam)
+* [Azure 서비스를 사용하여 인증](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/internal/iam)
 * [SSH 인증으로 새로운 가상 머신 배포](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/compute)
 * [Azure Container Instances에 컨테이너 이미지 배포](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerinstance)
 * [Azure Kubernetes Service에서 클러스터 만들기](https://github.com/Azure-Samples/azure-sdk-for-go-samples/tree/master/containerservice)
