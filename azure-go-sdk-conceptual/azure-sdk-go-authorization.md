@@ -59,7 +59,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 
 제어된 설정에서 응용 프로그램을 실행하는 경우, 환경 기반 인증은 자연스러운 선택입니다. 이 인증 메서드를 사용하여, 응용 프로그램을 실행하기 전에 셸 환경을 구성합니다. 런타임 시 Go SDK는 Azure를 사용하여 인증하기 위해 이러한 환경 변수를 읽습니다.
 
-환경 기반 인증은 장치 토큰을 제외한 모든 인증 방법에 대해 지원되며, 다음 순서로 평가됩니다.
+환경 기반 인증은 디바이스 토큰을 제외한 모든 인증 방법에 대해 지원되며, 다음 순서로 평가됩니다.
 
 * 클라이언트 자격 증명
 * X509 인증서
@@ -141,7 +141,7 @@ authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoi
 
 ## <a name="use-device-token-authentication"></a>장치 토큰 인증 사용
 
-사용자가 대화형으로 로그인하도록 하려면 장치 토큰 인증을 통하는 것이 가장 좋은 방법입니다. 이 인증 흐름에서 Microsoft 로그인 사이트에 붙여 넣을 토큰을 사용자에게 전달하면, 사용자가 이 로그인 사이트에서 AAD(Azure Active Directory) 계정을 사용하여 인증합니다. 표준 사용자 이름/암호 인증과 달리, 이 인증 방법은 다단계 인증을 사용하도록 설정된 계정을 지원합니다.
+사용자가 대화형으로 로그인하도록 하려면 디바이스 토큰 인증을 통하는 것이 가장 좋은 방법입니다. 이 인증 흐름에서 Microsoft 로그인 사이트에 붙여 넣을 토큰을 사용자에게 전달하면, 사용자가 이 로그인 사이트에서 AAD(Azure Active Directory) 계정을 사용하여 인증합니다. 표준 사용자 이름/암호 인증과 달리, 이 인증 방법은 다단계 인증을 사용하도록 설정된 계정을 지원합니다.
 
 장치 토큰 인증을 사용하려면 [NewDeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewDeviceFlowConfig) 함수를 사용하여 [DeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig) 권한 부여자를 만듭니다. 인증 프로세스를 시작하려면 결과 개체에서 [권한 부여자](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig.Authorizer)를 호출합니다. 전체 인증 흐름이 완료될 때까지 장치 흐름 인증에서 프로그램 실행을 차단합니다.
 
