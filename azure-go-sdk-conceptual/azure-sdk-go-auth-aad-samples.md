@@ -25,4 +25,4 @@ Azure SDK for Go의 모든 샘플은 [GitHub](https://github.com/Azure-Samples/a
 |------|-------------|
 | [internal/iam/authorizers](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/internal/iam/authorizers.go) | 서비스를 사용하기 위해 Azure로 인증하는 방법입니다. |
 | [authorization/authorization](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/authorization/authorization.go) | AAD 역할을 추가, 제거 및 검사합니다. |
-| [graphrbac/graph](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/graphrbac/graph.go) | 서비스 주체 및 AAD 응용 프로그램을 검사하고 만듭니다. 기존 서비스 주체 또는 응용 프로그램에 암호를 추가합니다. |
+| [graphrbac/graph](https://github.com/Azure-Samples/azure-sdk-for-go-samples/blob/master/graphrbac/graph.go) | 서비스 주체 및 AAD 애플리케이션을 검사하고 만듭니다. 기존 서비스 주체 또는 애플리케이션에 암호를 추가합니다. |
