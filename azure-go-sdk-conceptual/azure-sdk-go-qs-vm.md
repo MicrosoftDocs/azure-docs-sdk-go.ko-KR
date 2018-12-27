@@ -37,7 +37,7 @@ Azure CLI의 로컬 설치를 사용할 경우, 이 빠른 시작을 위해서�
 
 ## <a name="create-a-service-principal"></a>서비스 주체 만들기
 
-응용 프로그램으로 Azure에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
+애플리케이션으로 Azure에 비 대화형으로 로그인하려면 서비스 주체가 필요합니다. 서비스 주체는 고유한 사용자 ID를 만드는 RBAC(역할 기반 액세스 제어)의 일부입니다. CLI를 사용하여 새로운 서비스 주체를 만들려면 다음 명령을 실행합니다.
 
 ```azurecli-interactive
 az ad sp create-for-rbac --sdk-auth > quickstart.auth
