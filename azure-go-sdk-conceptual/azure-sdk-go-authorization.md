@@ -34,7 +34,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 | 사용자 이름/암호 | 다른 인증 방법을 사용할 수 없는 대화형 응용 프로그램이 있습니다. 사용자에게 AAD 로그인에 대해 사용하도록 설정된 다단계 인증이 없습니다. |
 
 > [!IMPORTANT]
-> 클라이언트 자격 증명 외의 인증 유형을 사용하는 경우 응용 프로그램이 Azure Active Directory에 등록되어야 합니다. 자세한 내용은 [Azure Active Directory와 응용 프로그램 통합](/azure/active-directory/develop/active-directory-integrating-applications)을 참조하세요.
+> 클라이언트 자격 증명 외의 인증 유형을 사용하는 경우 애플리케이션이 Azure Active Directory에 등록되어야 합니다. 자세한 내용은 [Azure Active Directory와 응용 프로그램 통합](/azure/active-directory/develop/active-directory-integrating-applications)을 참조하세요.
 >
 > [!NOTE]
 > 특별한 요구 사항이 없으면 사용자 이름/암호 인증을 사용하지 마십시오. 사용자 기반 로그인이 적절한 경우에는 일반적으로 장치 토큰 인증을 대신 사용할 수 있습니다.
@@ -77,11 +77,11 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 |                        |      `AZURE_CLIENT_ID`       |                                                                                       서비스 주체의 이름 또는 ID입니다.                                                                                       |
 |                        |    `AZURE_CLIENT_SECRET`     |                                                                                  서비스 사용자와 연결된 비밀입니다.                                                                                   |
 |    **인증서**     |      `AZURE_TENANT_ID`       |                                                                   인증서가 등록된 Active Directory 테넌트의 ID입니다.                                                                    |
-|                        |      `AZURE_CLIENT_ID`       |                                                                              인증서와 연결된 응용 프로그램 클라이언트 ID입니다.                                                                              |
+|                        |      `AZURE_CLIENT_ID`       |                                                                              인증서와 연결된 애플리케이션 클라이언트 ID입니다.                                                                              |
 |                        |   `AZURE_CERTIFICATE_PATH`   |                                                                                       클라이언트 인증서 파일 경로입니다.                                                                                       |
 |                        | `AZURE_CERTIFICATE_PASSWORD` |                                                                                       클라이언트 인증서에 대한 암호입니다.                                                                                       |
 | **사용자 이름/암호**  |      `AZURE_TENANT_ID`       |                                                                           사용자가 속하는 Active Directory 테넌트의 ID입니다.                                                                           |
-|                        |      `AZURE_CLIENT_ID`       |                                                                                              응용 프로그램 클라이언트 ID입니다.                                                                                              |
+|                        |      `AZURE_CLIENT_ID`       |                                                                                              애플리케이션 클라이언트 ID입니다.                                                                                              |
 |                        |       `AZURE_USERNAME`       |                                                                                            로그인에 사용하는 사용자 이름입니다.                                                                                             |
 |                        |       `AZURE_PASSWORD`       |                                                                                            로그인에 사용하는 암호입니다.                                                                                             |
 |  **관리 ID**  |                              | 관리 ID 인증에 자격 증명이 필요하지 않습니다. 관리 ID를 사용하도록 구성된 Azure 리소스에서 응용 프로그램을 실행해야 합니다. 자세한 내용은 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
@@ -128,7 +128,7 @@ Azure Stack에서 Go용 Azure SDK를 사용하는 방법에 대한 자세한 정
 az ad sp create-for-rbac --sdk-auth > azure.auth
 ```
 
-`AZURE_AUTH_LOCATION` 환경 변수를 권한 부여 파일이 있는 위치로 설정합니다. 응용 프로그램에서 이 환경 변수를 읽고 그 안에 포함된 자격 증명을 구문 분석합니다. 런타임 시 권한 부여 파일을 선택해야 하는 경우, [os.Setenv](https://golang.org/pkg/os/#Setenv) 함수를 사용하여 프로그램의 환경을 조작합니다.
+`AZURE_AUTH_LOCATION` 환경 변수를 권한 부여 파일이 있는 위치로 설정합니다. 애플리케이션에서 이 환경 변수를 읽고 그 안에 포함된 자격 증명을 구문 분석합니다. 런타임 시 권한 부여 파일을 선택해야 하는 경우, [os.Setenv](https://golang.org/pkg/os/#Setenv) 함수를 사용하여 프로그램의 환경을 조작합니다.
 
 인증 정보를 로드하려면 [NewAuthorizerFromFile](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewAuthorizerFromFile) 함수를 호출합니다. 환경 기반 권한 부여와 달리, 파일 기반 권한 부여에는 리소스 엔드포인트가 필요합니다.
 
@@ -160,7 +160,7 @@ authorizer, err := deviceConfig.Authorizer()
 * 기본 제공 인증 메서드를 사용하는 것을 금지하는 요구 사항이 있는 경우
 
 > [!WARNING]
-> 절대로 Azure 자격 증명을 응용 프로그램에 하드 코딩하지 마세요. 응용 프로그램 이진 코드에 비밀 정보를 삽입하면 응용 프로그램 실행 여부에 관계없이 공격자가 정보를 쉽게 추출할 수 있습니다. 그러면 해당 자격 증명에 대해 권한이 부여된 모든 Azure 리소스가 위험에 처하게 됩니다.
+> 절대로 Azure 자격 증명을 애플리케이션에 하드 코딩하지 마세요. 애플리케이션 이진 코드에 비밀 정보를 삽입하면 애플리케이션 실행 여부에 관계없이 공격자가 정보를 쉽게 추출할 수 있습니다. 그러면 해당 자격 증명에 대해 권한이 부여된 모든 Azure 리소스가 위험에 처하게 됩니다.
 
 다음 표에는 `AuthorizerConfig` 인터페이스를 따르는 SDK의 형식이 나열되어 있습니다.
 
