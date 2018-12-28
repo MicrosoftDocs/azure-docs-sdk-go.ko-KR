@@ -18,7 +18,7 @@ ms.locfileid: "52337146"
 ---
 # <a name="install-the-azure-sdk-for-go"></a>Azure SDK for Go 설치
 
-Azure SDK for Go 시작! SDK를 사용하면 Go 응용 프로그램에서 Azure 서비스를 관리하고 상호 작용할 수 있습니다.
+Azure SDK for Go 시작! SDK를 사용하면 Go 애플리케이션에서 Azure 서비스를 관리하고 상호 작용할 수 있습니다.
 
 ## <a name="get-the-azure-sdk-for-go"></a>Azure SDK for Go 가져오기
 
