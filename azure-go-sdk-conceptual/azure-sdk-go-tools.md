@@ -37,14 +37,14 @@ Visual Studio Code는 Go 지원을 제공하는 경량 편집기입니다. 이�
 
 ## <a name="cicd-with-azure-devops-project"></a>Azure DevOps 프로젝트를 사용하는 CI/CD
 
-Azure DevOps Project 파이프라인을 사용하여 Go 응용 프로그램에 대한 지속적인 통합 시스템을 구축할 수 있습니다. git 리포지토리만 있으면, Azure에서 직접 배포 및 테스트할 수 있습니다.
+Azure DevOps Project 파이프라인을 사용하여 Go 애플리케이션에 대한 지속적인 통합 시스템을 구축할 수 있습니다. git 리포지토리만 있으면, Azure에서 직접 배포 및 테스트할 수 있습니다.
 
 > [!div class="nextstepaction"]
 > [Azure DevOps 프로젝트를 사용하여 CI/CD 파이프라인을 만드는 방법 알아보기](/azure/devops-project/azure-devops-project-go)
 
 ## <a name="dependency-management-with-dep"></a>dep로 종속성 관리
 
-Go용 Azure SDK는 종속성 관리를 위한 dep를 사용합니다. dep 명령을 사용하면 버전 충돌을 피하고 프로젝트가 올바르게 작동하는지 확인하여 Go 응용 프로그램에 대한 벤더 요구 사항을 끌어올 수 있습니다.
+Go용 Azure SDK는 종속성 관리를 위한 dep를 사용합니다. dep 명령을 사용하면 버전 충돌을 피하고 프로젝트가 올바르게 작동하는지 확인하여 Go 애플리케이션에 대한 벤더 요구 사항을 끌어올 수 있습니다.
 
 > [!div class="nextstepaction"]
 > [dep 종속성 관리자 얻기](https://github.com/golang/dep)

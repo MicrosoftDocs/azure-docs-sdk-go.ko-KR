@@ -83,8 +83,8 @@ az ad sp delete --id ${CLIENT_ID_VALUE}
 여기서 `quickstart.auth`로부터 `CLIENT_ID_VALUE`에 대한 값을 제공합니다.
 
 > [!WARNING]
-> 이 응용 프로그램의 서비스 주체를 삭제하지 못하면 Azure Active Directory 테넌트를 활성 상태로 두게 됩니다.
-> 서비스 보안 주체의 이름과 암호는 모두 UUID로 생성되지만, 사용하지 않는 서비스 주체와 Azure Active Directory 응용 프로그램을 삭제하여 모범 보안 관행을 따르도록 하십시오.
+> 이 애플리케이션의 서비스 주체를 삭제하지 못하면 Azure Active Directory 테넌트를 활성 상태로 두게 됩니다.
+> 서비스 보안 주체의 이름과 암호는 모두 UUID로 생성되지만, 사용하지 않는 서비스 주체와 Azure Active Directory 애플리케이션을 삭제하여 모범 보안 관행을 따르도록 하십시오.
 
 ## <a name="code-in-depth"></a>코드 심화 안내
 
