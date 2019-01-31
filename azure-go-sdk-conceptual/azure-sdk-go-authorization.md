@@ -9,13 +9,13 @@ ms.date: 09/05/2018
 ms.topic: conceptual
 ms.technology: azure-sdk-go
 ms.devlang: go
-ms.component: authentication
-ms.openlocfilehash: c2c3dccfa8da5cfe57fee0b90139002068982560
-ms.sourcegitcommit: 887b15afcdeaf926a5f3d21b64e4045167fd062c
+ms.subservice: authentication
+ms.openlocfilehash: c66d6e65f36586bbe5b030cc3b783057b39668db
+ms.sourcegitcommit: be967d413a8bf906470e65a97e61688faa9dd98a
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 10/21/2018
-ms.locfileid: "49481985"
+ms.lasthandoff: 01/26/2019
+ms.locfileid: "55071153"
 ---
 # <a name="authentication-methods-in-the-azure-sdk-for-go"></a>Azure SDK for Go에서의 인증 방법
 
@@ -30,14 +30,14 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 | 인증서 기반 인증 | AAD(Azure Active Directory) 사용자 또는 서비스 주체에 대해 구성된 X509 인증서가 있습니다. 자세한 내용은 [Azure Active Directory에서 인증서 기반 인증 시작]을 참조하세요. |
 | 클라이언트 자격 증명 | 이 애플리케이션에 대해 설정된 구성된 서비스 주체가 있거나 해당 서비스 주체가 속한 애플리케이션 클래스가 있습니다. 자세한 내용은 [Azure CLI에서 서비스 주체 만들기]를 참조하세요. |
 | Azure 리소스에 대한 관리 ID | 관리 ID로 구성된 Azure 리소스에서 애플리케이션을 실행하는 중입니다. 자세히 알아보려면 [Azure 리소스에 대한 관리 ID]를 참조하세요. |
-| 장치 토큰 | 애플리케이션을 대화형으로__만__ 사용해야 합니다. 사용자에게 활성화된 다단계 인증이 있을 수 있습니다. 사용자에게 로그인할 웹 브라우저에 대한 액세스 권한이 있습니다. 자세한 내용은 [디바이스 토큰 인증 사용](#use-device-token-authentication)을 참조하세요.|
+| 디바이스 토큰 | 애플리케이션을 대화형으로__만__ 사용해야 합니다. 사용자에게 활성화된 다단계 인증이 있을 수 있습니다. 사용자에게 로그인할 웹 브라우저에 대한 액세스 권한이 있습니다. 자세한 내용은 [디바이스 토큰 인증 사용](#use-device-token-authentication)을 참조하세요.|
 | 사용자 이름/암호 | 다른 인증 방법을 사용할 수 없는 대화형 애플리케이션이 있습니다. 사용자에게 AAD 로그인에 대해 사용하도록 설정된 다단계 인증이 없습니다. |
 
 > [!IMPORTANT]
 > 클라이언트 자격 증명 외의 인증 유형을 사용하는 경우 애플리케이션이 Azure Active Directory에 등록되어야 합니다. 자세한 내용은 [Azure Active Directory와 애플리케이션 통합](/azure/active-directory/develop/active-directory-integrating-applications)을 참조하세요.
 >
 > [!NOTE]
-> 특별한 요구 사항이 없으면 사용자 이름/암호 인증을 사용하지 마십시오. 사용자 기반 로그인이 적절한 경우에는 일반적으로 장치 토큰 인증을 대신 사용할 수 있습니다.
+> 특별한 요구 사항이 없으면 사용자 이름/암호 인증을 사용하지 마십시오. 사용자 기반 로그인이 적절한 경우에는 일반적으로 디바이스 토큰 인증을 대신 사용할 수 있습니다.
 
 [Azure Active Directory에서 인증서 기반 인증 시작]: /azure/active-directory/active-directory-certificate-based-authentication-get-started
 [Azure CLI에서 서비스 주체 만들기]: /cli/azure/create-an-azure-service-principal-azure-cli
@@ -48,7 +48,7 @@ Azure SDK for Go는 서로 다른 자격 증명 집합을 사용하여 여러 �
 * [_환경 기반 인증_](#use-environment-based-authentication)은 프로그램의 환경에서 직접 자격 증명을 읽습니다.
 * [_파일 기반 인증_](#use-file-based-authentication)은 서비스 주체 자격 증명을 포함하는 파일을 로드합니다.
 * [_클라이언트 기반 인증_](#use-an-authentication-client)은 코드의 개체를 사용하며 프로그램 실행 중에 사용자가 자격 증명을 제공해야 합니다.
-* [_장치 토큰 인증_](#use-device-token-authentication)은 사용자에게 토큰으로 웹 브라우저를 통해 대화형으로 로그인하도록 요구합니다.
+* [_디바이스 토큰 인증_](#use-device-token-authentication)은 사용자에게 토큰으로 웹 브라우저를 통해 대화형으로 로그인하도록 요구합니다.
 
 모든 인증 기능 및 유형을 `github.com/Azure/go-autorest/autorest/azure/auth` 패키지에서 사용할 수 있습니다.
 
@@ -139,11 +139,11 @@ authorizer, err := NewAuthorizerFromFile(azure.PublicCloud.ResourceManagerEndpoi
 
 서비스 주체 사용 및 액세스 권한 관리에 대한 자세한 내용은 [Azure CLI에서 서비스 주체 만들기]를 참조하세요.
 
-## <a name="use-device-token-authentication"></a>장치 토큰 인증 사용
+## <a name="use-device-token-authentication"></a>디바이스 토큰 인증 사용
 
 사용자가 대화형으로 로그인하도록 하려면 디바이스 토큰 인증을 통하는 것이 가장 좋은 방법입니다. 이 인증 흐름에서 Microsoft 로그인 사이트에 붙여 넣을 토큰을 사용자에게 전달하면, 사용자가 이 로그인 사이트에서 AAD(Azure Active Directory) 계정을 사용하여 인증합니다. 표준 사용자 이름/암호 인증과 달리, 이 인증 방법은 다단계 인증을 사용하도록 설정된 계정을 지원합니다.
 
-디바이스 토큰 인증을 사용하려면 [NewDeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewDeviceFlowConfig) 함수를 사용하여 [DeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig) 권한 부여자를 만듭니다. 인증 프로세스를 시작하려면 결과 개체에서 [권한 부여자](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig.Authorizer)를 호출합니다. 전체 인증 흐름이 완료될 때까지 장치 흐름 인증에서 프로그램 실행을 차단합니다.
+디바이스 토큰 인증을 사용하려면 [NewDeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#NewDeviceFlowConfig) 함수를 사용하여 [DeviceFlowConfig](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig) 권한 부여자를 만듭니다. 인증 프로세스를 시작하려면 결과 개체에서 [권한 부여자](https://godoc.org/github.com/Azure/go-autorest/autorest/azure/auth#DeviceFlowConfig.Authorizer)를 호출합니다. 전체 인증 흐름이 완료될 때까지 디바이스 흐름 인증에서 프로그램 실행을 차단합니다.
 
 ```go
 import "github.com/Azure/go-autorest/autorest/azure/auth"
