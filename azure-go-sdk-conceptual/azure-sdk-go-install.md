@@ -62,7 +62,7 @@ GoDoc에서 제공되는 전체 모듈 목록에서는 [사용 가능한 서비�
 [autorest/adal]: https://godoc.org/github.com/Azure/go-autorest/autorest/adal
 [autorest/to]: https://godoc.org/github.com/Azure/go-autorest/autorest/to
 
-Go 패키지 및 Azure 서비스는 독립적으로 버전 관리됩니다. 서비스 버전은 `services` 모듈 아래의 모듈 가져오기 경로의 일부입니다. 모듈의 전체 경로는 서비스 이름과 `YYYY-MM-DD` 형식의 버전 그리고 다시 서비스 이름으로 구성됩니다. 예를 들어 Compute 서비스의 `2017-03-30` 버전을 가져오기 위해서는 다음과 같습니다.
+Go 패키지 및 Azure 서비스는 독립적으로 버전 관리됩니다. 서비스 버전은 `services` 모듈 아래의 모듈 가져오기 경로의 일부입니다. 모듈의 전체 경로는 서비스 이름과 `YYYY-MM-DD` 형식의 버전 그리고 다시 서비스 이름으로 구성됩니다. 예를 들어 컴퓨팅 서비스의 `2017-03-30` 버전을 가져오기 위해서는 다음과 같습니다.
 
 ```go
 import "github.com/Azure/azure-sdk-for-go/services/compute/mgmt/2017-03-30/compute"

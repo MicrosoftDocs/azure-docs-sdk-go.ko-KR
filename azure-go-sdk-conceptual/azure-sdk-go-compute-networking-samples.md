@@ -1,6 +1,6 @@
 ---
-title: 계산 및 네트워킹을 위한 Azure SDK for Go 샘플
-description: Azure SDK for Go의 VM 및 가상 네트워크와 같은 계산 리소스로 작업하기 위해 선택한 샘플입니다.
+title: 계산 및 네트워킹을 위한 Go용 Azure SDK 샘플
+description: Go용 Azure SDK의 VM 및 가상 네트워크와 같은 계산 리소스로 작업하기 위해 선택한 샘플입니다.
 author: sptramer
 ms.author: sttramer
 manager: carmonm
@@ -16,7 +16,7 @@ ms.contentlocale: ko-KR
 ms.lasthandoff: 09/12/2018
 ms.locfileid: "44711960"
 ---
-# <a name="azure-sdk-for-go-samples-for-compute-and-networking"></a>계산 및 네트워킹을 위한 Azure SDK for Go 샘플
+# <a name="azure-sdk-for-go-samples-for-compute-and-networking"></a>계산 및 네트워킹을 위한 Go용 Azure SDK 샘플
 
 다음 표는 Go용 Azure SDK에서 계산 및 가상 네트워크 리소스를 관리하는 방법을 보여주는 선정된 예제에 대한 링크입니다.
 
